@@ -14,7 +14,7 @@ router.post('/', async(req, res) => {
         .create({
             body: `Customer Name: ${req.body.name}\nEmail: ${req.body.email}\nPhone Number: ${req.body.phone}\nAddress: ${req.body.address}\nCity: ${req.body.city}\nProducts: ${req.body.products}\nSubtotal: ${req.body.total}`,
             from: 'whatsapp:+14155238886',
-            to: 'whatsapp:+923363374624'
+            to: 'whatsapp:+923083116347'
         })
 
 
