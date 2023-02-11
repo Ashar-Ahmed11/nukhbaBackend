@@ -7,15 +7,16 @@ router.post('/', async(req, res) => {
         service: 'gmail',
         auth: {
 
-            user: 'ashar.a.hmd11@gmail.com',
-            pass: 'skfyglracnfckxca'
+            user: 'nukhba.shops@gmail.com',
+            pass: 'ahvbfisxkhyfbxjo'
 
 
         }
     })
 
 
-
+    // user: 'ashar.a.hmd11@gmail.com',
+    // pass: 'skfyglracnfckxca'
     // user: 'nukhba.shops@gmail.com',
     // pass: 'ahvbfisxkhyfbxjo'
 
