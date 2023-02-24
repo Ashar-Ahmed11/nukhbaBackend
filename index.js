@@ -9,7 +9,7 @@ app.use(fileupload({
     useTempFiles: true
 }));
 app.use(express.json())
-app.use(cors())
+app.use(cors({ origin: true }))
 
 app.use('/api/sendmessage', require('./routes/twilio'))
 app.use('/api/sendemail', require('./routes/email'))
