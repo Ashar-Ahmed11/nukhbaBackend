@@ -49,15 +49,15 @@ router.post('/createcategory', async(req, res) => {
 
         const data = {
             user: admin._id,
-            mainCarousalImgDesktop: 'https://res.cloudinary.com/dextrzp2q/image/upload/v1677277064/tiknr1bfpnx4alc4lr93.png',
-            mainCarousalImgPhone: 'https://res.cloudinary.com/dextrzp2q/image/upload/v1677277078/vyd3v4yzpkm1t1isuf5c.png',
-            mainHeading: 'Office Bags',
-            firstHeading: 'Office Bags',
-            firstSmallPara: 'The best accessory is a leather belt. The greatest option for men who value elegance is this one. There is a reason why you should acquire a leather belt; it is regarded as a sign of elegance and quality.',
-            firstSmallParaTwo: "It enhances your sense of style and consistently feels like the ideal complement to any outfit you choose to wear, whether it is business- or casual-casual. When you carry a leather belt, you don't need to worry about the climate or weather outdoors since it will keep your belongings safe and secure in any situation. Because they are lightweight, you won't feel burdened even if you wear additional items like keys or cash.",
-            firstSmallParaThree: "At Nukhba, we go out of our way to pamper our clients by giving them the highest quality leather accessories and Handbags. We spent a lot of time learning precisely what they wanted, selecting only the best materials, and creating Handbags that were sophisticated and exquisite. We represent one of Pakistan's top belt brands, so you won't need to be concerned about the product's quality.",
+            mainCarousalImgDesktop: 'https://res.cloudinary.com/dextrzp2q/image/upload/v1678537550/knpz1pszgqkze7iwv3hm.avif',
+            mainCarousalImgPhone: 'https://res.cloudinary.com/dextrzp2q/image/upload/v1677446793/piefl0qw89izkoh300fd.png',
+            mainHeading: req.body.mainHeading,
+            firstHeading: req.body.mainHeading,
+            firstSmallPara: 'The best accessory is a leather wallet. The greatest option for men who value elegance is this one. There is a reason why you should acquire a leather wallet; it is regarded as a sign of elegance and quality.',
+            firstSmallParaTwo: "It enhances your sense of style and consistently feels like the ideal complement to any outfit you choose to wear, whether it is business- or casual-casual. When you carry a leather wallet, you don't need to worry about the climate or weather outdoors since it will keep your belongings safe and secure in any situation. Because they are lightweight, you won't feel burdened even if you wear additional items like keys or cash.",
+            firstSmallParaThree: "At Nukhba, we go out of our way to pamper our clients by giving them the highest quality leather accessories and Handbags. We spent a lot of time learning precisely what they wanted, selecting only the best materials, and creating Handbags that were sophisticated and exquisite. We represent one of Pakistan's top wallet brands, so you won't need to be concerned about the product's quality.",
             secondHeading: "Purchase Stylish Leather Handbags of the Highest Quality Online in Pakistan.",
-            secondSmallPara: "The greatest leather Handbags for men and women are available at Nukhba. They are expertly created with great care. The materials are of the highest calibre, and the workmanship is flawless. These Handbags come in a range of designs and hues to suit your preferences. You may get it online in Pakistan, whether you want something with a basic, clean design or one with more intricate features. Gifting a handmade leather belt to a friend or relative who values fine craftsmanship is a great idea.",
+            secondSmallPara: "The greatest leather Handbags for men and women are available at Nukhba. They are expertly created with great care. The materials are of the highest calibre, and the workmanship is flawless. These Handbags come in a range of designs and hues to suit your preferences. You may get it online in Pakistan, whether you want something with a basic, clean design or one with more intricate features. Gifting a handmade leather wallet to a friend or relative who values fine craftsmanship is a great idea.",
             secondSmallParaTwo: "Our leather Handbags are made from the best materials and may quickly up the elegance of your ensemble. Additionally, because our leather Handbags are made to last, you may cherish them for many years to come and pass them on to the following generation. There is a leather wallet for everyone, whether it's for business or leisure, so get yours now!",
             secondSmallParaThree: "Moreover, we offer our customers with customized Handbags with name and picture as well! Last but not least, we offer every type of wallet from minimalist to bulky to zippered, and whatsoever. So, you can buy the best but affordable Handbags in Pakistan without any hassle!",
 
@@ -65,7 +65,8 @@ router.post('/createcategory', async(req, res) => {
 
         const home = await Category.create(data)
         home.save()
-        res.send(home)
+        const updatedCategory = await Category.find()
+        res.send(updatedCategory)
 
 
     } catch (error) {
@@ -85,6 +86,19 @@ router.get('/getcategory/:id', async(req, res) => {
 router.get('/getcategories', async(req, res) => {
     const home = await Category.find()
     res.send(home)
+})
+router.delete('/deletecategory/:id', async(req, res) => {
+
+    try {
+        
+    
+    const result = await Category.findByIdAndRemove(req.params.id)
+    const getCategories = await Category.find()
+    res.send(getCategories)
+} catch (error) {
+    console.error(error.message)
+    return res.status(500).send("Internal Server Error")
+}
 })
 
 router.put('/edithome', fetchAdmin, async(req, res) => {
