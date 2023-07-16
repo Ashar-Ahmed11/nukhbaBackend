@@ -16,6 +16,7 @@ app.use('/api/sendemail', require('./routes/email'))
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/getdata', require('./routes/home'))
 app.use('/api/sendImg', require('./routes/cloudinary'))
+app.use('/api/products', require('./routes/products'))
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
