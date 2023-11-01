@@ -168,4 +168,17 @@ router.delete('/deleteproduct/:id', async (req, res) => {
   }
 })
 
+
+router.put('/createfield',async(req,res)=>{
+  try {
+   
+  const updateField = await Products.update({},{$set:{"priceAED":50}},{upsert:false,multi:true})
+  res.send(updateField)
+     
+} catch (error) {
+  console.error(error.message)
+  res.status(500).send('Internal Server Error')
+}
+})
+
 module.exports = router
